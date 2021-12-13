@@ -34,18 +34,31 @@ class SettingPageUI extends StatelessWidget {
 
               ],
             ),
-            const Divider(height: 100),
+            const Divider(height: 50),
             const SizedBox(height: 10),
             Row(
-              children: const <Widget> [
-                Icon(
+              children: <Widget> [
+                const Icon(
                   Icons.arrow_forward,
                   color: Colors.grey,
                   size: 30.0,
                 ),
-                Divider(height: 100, thickness: 30),
-                SizedBox(width: 30),
-                Text("Dil Seçeneği", style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal)),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text("Dil Seçeneği",
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
               ],
             ),
             Row(
@@ -55,20 +68,128 @@ class SettingPageUI extends StatelessWidget {
                   color: Colors.grey,
                   size: 30.0,
                 ),
-                const Divider(height: 100, thickness: 30),
-                const SizedBox(width: 30),
-                const Text("Gece Modu", style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal)),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {
+                        MyApp.themeNotifier.value =
+                        MyApp.themeNotifier.value == ThemeMode.light
+                            ? ThemeMode.dark
+                            : ThemeMode.light;
+                  },
+                  child: const Text("Temayı değiştir",
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
 
-                IconButton(
-                    icon: Icon(MyApp.themeNotifier.value == ThemeMode.light
-                        ? Icons.dark_mode
-                        : Icons.light_mode),
-                    onPressed: () {
-                      MyApp.themeNotifier.value =
-                      MyApp.themeNotifier.value == ThemeMode.light
-                          ? ThemeMode.dark
-                          : ThemeMode.light;
-                    })
+                ),
+
+              ],
+            ),
+            Row(
+              children: <Widget> [
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                  size: 30.0,
+                ),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text("Servis Takip",
+                      style: TextStyle(
+                          fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
+              ],
+            ),
+            Row(
+              children: <Widget> [
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                  size: 30.0,
+                ),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text("Şifre değiştir",
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
+              ],
+            ),
+            Row(
+              children: <Widget> [
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                  size: 30.0,
+                ),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text("Telefon numarası değiştir",
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
+              ],
+            ),
+            Row(
+              children: <Widget> [
+                const Icon(
+                  Icons.arrow_forward,
+                  color: Colors.grey,
+                  size: 30.0,
+                ),
+                const Divider(height: 50, thickness: 30),
+                const SizedBox(width: 20),
+                ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.orangeAccent,
+                    shape: RoundedRectangleBorder( //to set border radius to button
+                        borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  onPressed: () {},
+                  child: const Text("Mail adresi değiştir",
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
+                ),
+
               ],
             ),
           ],
