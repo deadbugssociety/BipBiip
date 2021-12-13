@@ -12,15 +12,15 @@ class _GMapState extends State<GMap> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Duraklar'),
-      ),
-      body: GoogleMap(initialCameraPosition: CameraPosition(
-              target: LatLng(37.77483, -122.41942),
-              zoom: 12,
-              ),
+        appBar: AppBar(
+          title: Text('Duraklar'),
+        ),
+        body: GoogleMap(initialCameraPosition: CameraPosition(
+          target: LatLng(37.77483, -122.41942),
+          zoom: 12,
+        ),
 
-      )
+        )
     );
   }
 }

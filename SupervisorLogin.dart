@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'StudentLogin.dart';
-import 'DriverLogin.dart';
 import 'SupervisorLogin.dart';
 import 'ChangeEmail.dart';
 import 'ChangePassword.dart';
@@ -8,15 +6,14 @@ import 'ForgotPassword.dart';
 import 'Signup.dart';
 import 'ChangePhoneNumber.dart';
 import 'UserType.dart';
+import 'administrationscreen.dart';
 
-class Signup extends StatelessWidget {
+class SupervisorLogin extends StatelessWidget {
 
-  TextEditingController firstnameController = TextEditingController();
-  TextEditingController lastnameController = TextEditingController();
-  TextEditingController phoneNumberController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
+  bool _value = false;
+
+  TextEditingController nameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController passwordCheckController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +23,7 @@ class Signup extends StatelessWidget {
           elevation:0.5,
           backgroundColor: Colors.transparent,
           title: Text(
-              'Kayıt Ekranı',
+              'Giriş Ekranı',
               style: TextStyle(
                 color: Colors.white70,
               )
@@ -53,68 +50,34 @@ class Signup extends StatelessWidget {
                         alignment: Alignment.center,
                         padding: EdgeInsets.all(10),
                         child: Text(
-                          'BipBiip',
+                          'Tekrar Hoşgeldin!',
                           style: TextStyle(
                               color: Colors.white70,
                               fontWeight: FontWeight.w500,
                               fontSize: 30),
                         )),
                     Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        controller: firstnameController,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'İsim',
-                            labelStyle: TextStyle(
+                        alignment: Alignment.center,
+                        padding: EdgeInsets.all(10),
+                        child: Text(
+                            'Seni gördüğümüze çok sevindik!',
+                            style: TextStyle(
+                              fontSize: 20,
                               color: Colors.white70,
-                            )
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
+                            ))),
                     Container(
                       padding: EdgeInsets.all(10),
                       child: TextField(
-                        controller: lastnameController,
+                        controller: nameController,
                         decoration: InputDecoration(
                             border: OutlineInputBorder(),
-                            labelText: 'Soyisim',
+                            labelText: 'İsim - Soyisim',
                             labelStyle: TextStyle(
                               color: Colors.white70,
                             )
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        controller: phoneNumberController,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Telefon Numarası',
-                            labelStyle: TextStyle(
-                              color: Colors.white70,
-                            )
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      child: TextField(
-                        controller: emailController,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'E-mail',
-                            labelStyle: TextStyle(
-                              color: Colors.white70,
-                            )
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 10),
                     Container(
                       padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
                       child: TextField(
@@ -129,51 +92,68 @@ class Signup extends StatelessWidget {
                         ),
                       ),
                     ),
-                    SizedBox(height: 10),
                     Container(
-                      padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
-                      child: TextField(
-                        obscureText: true,
-                        controller: passwordCheckController,
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            labelText: 'Şifreyi Onayla',
-                            labelStyle: TextStyle(
-                              color: Colors.white70,
+                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        child: Row(
+                          children: <Widget>[
+                            Checkbox(
+                                value: _value,
+                                onChanged: (value) {
+
+                                }),
+                            Text(
+                              'Beni hatırla',
+                              style: TextStyle(fontSize: 17.0,color:Colors.white70),
                             )
-                        ),
-                      ),
+                          ],
+                        )
                     ),
-                    SizedBox(height: 30),
+                    //Text
+                    FlatButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => ForgotPassword()),
+                        );
+                      },
+                      textColor: Colors.white70,
+                      child: Text('Şifreni mi Unuttun?'),
+                    ),
                     Container(
                         height: 50,
                         padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                         child: RaisedButton(
                           textColor: Colors.white70,
-                          color: Color.fromRGBO(69,116,207,1),
+                          color: Color.fromRGBO(41, 155, 206, 1),
                           child: Text('Giriş'),
                           onPressed: () {
-                            print(firstnameController.text);
-                            print(lastnameController.text);
-                            print(phoneNumberController.text);
-                            print(emailController.text);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AdministrationScreen()),
+                            );
+                            print(nameController.text);
                             print(passwordController.text);
-                            print(passwordCheckController.text);
                           },
                         )),
                     Container(
                         child: Row(
                           children: <Widget>[
+                            Text('Hesabın yok mu?',
+                              style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.white70,
+                              ),
+                            ),
                             FlatButton(
                               textColor: Colors.white70,
                               child: Text(
-                                'Zaten bir hesabın var mı?',
+                                'Kaydol',
                                 style: TextStyle(fontSize: 20),
                               ),
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => StudentLogin()),
+                                  MaterialPageRoute(builder: (context) => Signup()),
                                 );
                               },
                             )

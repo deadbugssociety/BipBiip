@@ -5,17 +5,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:bipbiip/gmap.dart';
 import 'package:flutter/material.dart';
-import 'package:bipbiip/Mapscreen.dart';
-
-import 'main.dart';
+import 'other_side.dart';
 
 
-class OtherSide extends StatefulWidget {
+class MapScreen extends StatefulWidget {
   @override
-  _OtherSideState createState() => _OtherSideState();
+  _MapScreenState createState() => _MapScreenState();
 }
 
-class _OtherSideState extends State<OtherSide> {
+class _MapScreenState extends State<MapScreen> {
   Completer<GoogleMapController> _controller = Completer();
   List<Marker> markers = [];
 
@@ -28,50 +26,42 @@ class _OtherSideState extends State<OtherSide> {
   intilize(){
     Marker firstMarker = Marker(
       markerId: MarkerId('first'),
-      position: LatLng(40.80897, 29.36478),
+      position: LatLng(40.79047, 29.49406),
       infoWindow: InfoWindow(
-          title: "Gebze Teknik Üniversitesi",
+          title: "Gebze Kyk yurdu",
           snippet: "ilk durak"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     Marker secondMarker = Marker(
       markerId: MarkerId('second'),
-      position: LatLng(40.80685, 29.35952),
+      position: LatLng(40.79619, 29.44233),
       infoWindow: InfoWindow(
-          title: "GTÜ Kütüphanesi",
+          title: "Gebze Center",
           snippet: "ikinci durak"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     Marker thirdMarker = Marker(
       markerId: MarkerId('third'),
-      position: LatLng(40.81057, 29.36895),
+      position: LatLng(40.78804, 29.43173),
       infoWindow: InfoWindow(
-          title: "McDonald's",
+          title: "Tatlıkuyu",
           snippet: "üçüncü durak"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     Marker fourthMarker = Marker(
       markerId: MarkerId('fourth'),
-      position: LatLng(40.79619, 29.44233),
+      position: LatLng(40.81057, 29.36895),
       infoWindow: InfoWindow(
-          title: "Gebze Center AVM",
+          title: "McDonald's",
           snippet: "dördüncü durak"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     Marker fifthMarker = Marker(
       markerId: MarkerId('fifth'),
-      position: LatLng(40.79549, 29.45948),
+      position: LatLng(40.80897, 29.36478),
       infoWindow: InfoWindow(
-          title: "Gebze Otogar",
+          title: "Gebze Teknik Üniversitesi",
           snippet: "beşinci durak"),
-      icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
-    );
-    Marker sixthMarker = Marker(
-      markerId: MarkerId('sixth'),
-      position: LatLng(40.79047, 29.49406),
-      infoWindow: InfoWindow(
-          title: "Gebze KYK Yurdu",
-          snippet: "altıncı durak"),
       icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueRed),
     );
     markers.add(firstMarker);
@@ -79,7 +69,6 @@ class _OtherSideState extends State<OtherSide> {
     markers.add(thirdMarker);
     markers.add(fourthMarker);
     markers.add(fifthMarker);
-    markers.add(sixthMarker);
     setState(() {
     });
   }
@@ -146,10 +135,15 @@ class _OtherSideState extends State<OtherSide> {
 
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>MapScreen()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>MapScreen()),
+                          );
                         },
                         style: OutlinedButton.styleFrom(
+                          primary: Color.fromRGBO(237, 98,2, 1),
                           fixedSize: Size(150, 50),
+
                           backgroundColor: Color.fromRGBO(255, 255, 255, 0.2),
                           shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.only(
@@ -166,10 +160,13 @@ class _OtherSideState extends State<OtherSide> {
 
                       ElevatedButton(
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>OtherSide()));
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) =>OtherSide()),
+                          );
                         },
+
                         style: OutlinedButton.styleFrom(
-                          primary: Color.fromRGBO(237, 98,2, 1),
                           fixedSize: Size(150, 50),
                           backgroundColor: Color.fromRGBO(255, 255, 255, 0.2),
                           shape: RoundedRectangleBorder(
@@ -186,6 +183,8 @@ class _OtherSideState extends State<OtherSide> {
                     ]
                 ),
               ),
+
+
 
               SingleChildScrollView(
                 child:Flexible(
@@ -236,7 +235,7 @@ class _OtherSideState extends State<OtherSide> {
                                                 backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
 
                                               ),
-                                              child: Text('Gebze Teknik Üniversitesi',
+                                              child: Text('KYK',
                                                 style: TextStyle(height: 2, fontSize: 18),
                                               ),
                                             ),
@@ -265,7 +264,30 @@ class _OtherSideState extends State<OtherSide> {
                                                 backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
 
                                               ),
-                                              child: Text('GTÜ Kütüphanesi',
+                                              child: Text('Gebze Center AVM',
+                                                style: TextStyle(height: 2, fontSize: 18),
+                                              ),
+                                            ),
+                                          ]
+                                      ),
+                                      SizedBox(
+                                        height: 15.0,
+                                      ),
+                                      Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: <Widget>[
+                                            ElevatedButton(
+                                              onPressed: () {
+                                                //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>buschedule()));
+                                              },
+                                              style: OutlinedButton.styleFrom(
+                                                primary: Color.fromRGBO(195, 195,195, 1),
+                                                fixedSize: Size(325, 50),
+                                                side: BorderSide(color:Color.fromRGBO(46,72,128, 2), width:2),
+                                                backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
+
+                                              ),
+                                              child: Text('Tatlıkuyu',
                                                 style: TextStyle(height: 2, fontSize: 18),
                                               ),
                                             ),
@@ -311,53 +333,7 @@ class _OtherSideState extends State<OtherSide> {
                                                 backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
 
                                               ),
-                                              child: Text("Gebze Center AVM",
-                                                style: TextStyle(height: 2, fontSize: 18),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                      Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>buschedule()));
-                                              },
-                                              style: OutlinedButton.styleFrom(
-                                                primary: Color.fromRGBO(195, 195,195, 1),
-                                                fixedSize: Size(325, 50),
-                                                side: BorderSide(color:Color.fromRGBO(46,72,128, 2), width:2),
-                                                backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
-
-                                              ),
-                                              child: Text("Gebze Otogar",
-                                                style: TextStyle(height: 2, fontSize: 18),
-                                              ),
-                                            ),
-                                          ]
-                                      ),
-                                      SizedBox(
-                                        height: 15.0,
-                                      ),
-                                      Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: <Widget>[
-                                            ElevatedButton(
-                                              onPressed: () {
-                                                //Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>buschedule()));
-                                              },
-                                              style: OutlinedButton.styleFrom(
-                                                primary: Color.fromRGBO(195, 195,195, 1),
-                                                fixedSize: Size(325, 50),
-                                                side: BorderSide(color:Color.fromRGBO(46,72,128, 2), width:2),
-                                                backgroundColor: Color.fromRGBO(255, 255, 255, 0.1),
-
-                                              ),
-                                              child: Text("KYK",
+                                              child: Text("Gebze Teknik Üniversitesi",
                                                 style: TextStyle(height: 2, fontSize: 18),
                                               ),
                                             ),

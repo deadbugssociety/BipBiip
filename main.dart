@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'Login.dart';
+import 'StudentLogin.dart';
+import 'DriverLogin.dart';
+import 'SupervisorLogin.dart';
 import 'ChangeEmail.dart';
 import 'ChangePassword.dart';
 import 'ForgotPassword.dart';
@@ -15,6 +17,8 @@ void main() {
 
 class MyApp extends StatefulWidget {
   @override
+  static final ValueNotifier<ThemeMode> themeNotifier =
+  ValueNotifier(ThemeMode.light);
   Home createState() => Home();
 }
 
@@ -24,19 +28,15 @@ class Home extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-        backgroundColor: Color.fromRGBO(43,50,62,1),
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
           elevation: 0.5,
           backgroundColor: Colors.transparent,
           title: Text(
-              'BipBiip',
-              style: TextStyle(
-                color: Color.fromRGBO(43,50,62,1),
-              )
+            'BipBiip',
           ),
-          backgroundColor: Color.fromRGBO(69,116,207,1),
+          centerTitle: true,
         ),
         body: Container(
             decoration: BoxDecoration(
@@ -45,7 +45,7 @@ class Home extends State<MyApp> {
                   //Color.fromRGBO(245, 101, 3, 1),
                   Color.fromRGBO(211, 87, 3, 1),
                   Color.fromRGBO(24, 28, 79, 1),
-                  Color.fromRGBO(14, 17,53, 1),
+                  Color.fromRGBO(14, 17, 53, 1),
                 ],
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
@@ -61,23 +61,27 @@ class Home extends State<MyApp> {
                         child: Text(
                           'Hoşgeldin!',
                           style: TextStyle(
-                              color: Color.fromRGBO(69,116,207,1),
+                              color:Colors.white70,
                               fontWeight: FontWeight.w500,
                               fontSize: 60),
                         )),
                     SizedBox(height: 100),
                     Container(
                         height: 50,
-                        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                        padding: EdgeInsets.fromLTRB(10, 2, 10, 3),
                         child:
                         RaisedButton(
-                          textColor: Color.fromRGBO(43,50,62,1),
-                          color: Color.fromRGBO(69,116,207,1),
-                          child: Text('Giriş'),
+                          textColor: Colors.white70,
+                          color: Color.fromRGBO(41, 155, 206, 1),
+                          child: Text('Giriş',
+                          style: TextStyle(
+                              height: 2, fontSize: 22
+                          ),),
                           onPressed: () {
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => UserType()),
+                              MaterialPageRoute(
+                                  builder: (context) => UserType()),
                             );
                           },
                         )),
@@ -88,11 +92,11 @@ class Home extends State<MyApp> {
                             Text('Bir hesaba mı ihtiyacın var?',
                               style: TextStyle(
                                 fontSize: 20,
-                                color: Color.fromRGBO(69,116,207,1),
+                                color:Colors.white70,
                               ),
                             ),
                             FlatButton(
-                              textColor: Color.fromRGBO(69,116,207,1),
+                              textColor: Colors.white70,
                               child: Text(
                                 'Kaydol!',
                                 style: TextStyle(fontSize: 20),
@@ -100,7 +104,8 @@ class Home extends State<MyApp> {
                               onPressed: () {
                                 Navigator.push(
                                   context,
-                                  MaterialPageRoute(builder: (context) => Signup()),
+                                  MaterialPageRoute(builder: (context) =>
+                                      Signup()),
                                 );
                               },
                             )
@@ -111,3 +116,4 @@ class Home extends State<MyApp> {
                 ))));
   }
 }
+

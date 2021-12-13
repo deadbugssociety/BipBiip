@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'settingspage.dart';
+import 'package:bipbiip/timerback.dart';
+import 'package:bipbiip/Mapscreen.dart';
+import 'package:bipbiip/Busschedule.dart';
 
 class StudentScreen extends StatelessWidget {
   const StudentScreen({Key? key}) : super(key: key);
@@ -7,7 +10,10 @@ class StudentScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        extendBodyBehindAppBar: true,
         appBar: AppBar(
+          elevation:0.5,
+          backgroundColor: Colors.transparent,
           title: const Text(
               "Öğrenci Ana Sayfa", style: TextStyle(fontSize: 22)),
           leading: IconButton(
@@ -20,9 +26,23 @@ class StudentScreen extends StatelessWidget {
             ),
           ),
         ),
-        body: Center(
+        body: Container(
+
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                //Color.fromRGBO(245, 101, 3, 1),
+                Color.fromRGBO(211, 87, 3, 1),
+                Color.fromRGBO(24, 28, 79, 1),
+                Color.fromRGBO(14, 17,53, 1),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+          ),
+          child:Center(
           child: Padding(
-            padding: const EdgeInsets.all(14.0),
+            padding: const EdgeInsets.only(top:30.0),
             child: Column(
               children: <Widget>[
                 Row(
@@ -38,8 +58,7 @@ class StudentScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingPageUI()),
+                          MaterialPageRoute(builder: (context) =>MapScreen()),
                         );
                       },
                       child: const Text("Duraklar",
@@ -47,7 +66,8 @@ class StudentScreen extends StatelessWidget {
                               fontSize: 22, fontWeight: FontWeight.normal)),
                     ), //Container
                     const SizedBox(
-                      width: 20,
+                      width: 10,
+                      height: 5,
                     ), //SizedBox
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -60,8 +80,7 @@ class StudentScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingPageUI()),
+                          MaterialPageRoute(builder: (context) =>buschedule()),
                         );
                       },
                       child: const Text("Servis Saatleri",
@@ -82,18 +101,15 @@ class StudentScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingPageUI()),
-                        );
+
                       },
                       child: const Text("Servis Takip",
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.normal)),
                     ), //SizedBox//Container
                     const SizedBox(
-                      width: 20,
+                      width: 10,
+                      height: 5,
                     ),
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -106,8 +122,7 @@ class StudentScreen extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingPageUI()),
+                          MaterialPageRoute(builder: (context) =>TimerBack()),
                         );
                       },
                       child: const Text("Servise" '\n'"Yakınım" '\n'"Butonu", style: TextStyle(
@@ -128,18 +143,15 @@ class StudentScreen extends StatelessWidget {
                         ),
                       ),
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SettingPageUI()),
-                        );
+
                       },
-                      child: const Text("Duraklar",
+                      child: const Text("Ödeme Bilgileri",
                           style: TextStyle(
                               fontSize: 22, fontWeight: FontWeight.normal)),
                     ), //Container
                     const SizedBox(
-                      width: 20,
+                      width: 10,
+                      height: 5,
                     ), //SizedBox
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -168,7 +180,8 @@ class StudentScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
             ), //Column
           ), //Container
-        ) //Center
+        ),
+    )//Center
 
 
     );

@@ -6,7 +6,10 @@ class SettingPageUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
+        elevation:0.5,
+        backgroundColor: Colors.transparent,
         title: const Text("Ayarlar", style: TextStyle(fontSize: 22, fontWeight: FontWeight.normal)),
         leading: IconButton(
           onPressed: (){
@@ -20,6 +23,18 @@ class SettingPageUI extends StatelessWidget {
         ),
       ),
       body:Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+              //Color.fromRGBO(245, 101, 3, 1),
+              Color.fromRGBO(211, 87, 3, 1),
+              Color.fromRGBO(24, 28, 79, 1),
+              Color.fromRGBO(14, 17,53, 1),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
         padding: const EdgeInsets.all(10.0),
         child: ListView(
           children: [
@@ -78,10 +93,10 @@ class SettingPageUI extends StatelessWidget {
                     ),
                   ),
                   onPressed: () {
-                        MyApp.themeNotifier.value =
-                        MyApp.themeNotifier.value == ThemeMode.light
-                            ? ThemeMode.dark
-                            : ThemeMode.light;
+                    MyApp.themeNotifier.value =
+                    MyApp.themeNotifier.value == ThemeMode.light
+                        ? ThemeMode.dark
+                        : ThemeMode.light;
                   },
                   child: const Text("Temayı değiştir",
                     style: TextStyle(
@@ -110,8 +125,8 @@ class SettingPageUI extends StatelessWidget {
                   ),
                   onPressed: () {},
                   child: const Text("Servis Takip",
-                      style: TextStyle(
-                          fontSize: 22, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                        fontSize: 22, fontWeight: FontWeight.bold),
                   ),
                 ),
 
@@ -221,9 +236,3 @@ class LanguageSelection extends StatelessWidget{
     );
   }
 }
-
-
-
-
-
-

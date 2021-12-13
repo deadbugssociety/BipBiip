@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:version6/main.dart';
+import 'package:bipbiip/main.dart';
+import 'package:bipbiip/Busschedule.dart';
 
 class Weekend extends StatelessWidget {
   const Weekend({Key? key}) : super(key: key);
@@ -28,7 +29,7 @@ class Weekend extends StatelessWidget {
             end: Alignment.bottomCenter,
           ),
         ),
-       // margin: EdgeInsets.fromLTRB(10, 40, 10, 10),
+        // margin: EdgeInsets.fromLTRB(10, 40, 10, 10),
         padding: EdgeInsets.only(top: 110,left: 13,right: 13),
         child: SingleChildScrollView(
           child: Column(
