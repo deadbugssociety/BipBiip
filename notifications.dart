@@ -77,7 +77,9 @@ class LocalNotifyManager {
   }
 
   Future<void> scheduleNotification() async{
-    var scheduleNotificationDateTime = DateTime.parse("2021-12-13 19:55:00");
+    var scheduleNotificationDateTime = DateTime.parse("2021-12-15 19:32:00");
+    var scheduleNotificationDateTime2 = DateTime.parse("2021-12-15 19:34:00");
+    var scheduleNotificationDateTime3 = DateTime.parse("2021-12-15 19:36:00");
     var androidChannel = AndroidNotificationDetails(
       "CHANNEL_ID",
       "CHANNEL_NAME",
@@ -93,6 +95,22 @@ class LocalNotifyManager {
         "BipBiip First Notification",
         "Basardiiim",
         scheduleNotificationDateTime,
+        platformChannel,
+        payload:"New Payload"
+    );
+    await flutterLocalNotificationsPlugin.schedule(
+        1,
+        "BipBiip Second Notification",
+        "Basardiiim 2",
+        scheduleNotificationDateTime2,
+        platformChannel,
+        payload:"New Payload"
+    );
+    await flutterLocalNotificationsPlugin.schedule(
+        2,
+        "BipBiip Third Notification",
+        "Basardiiim 3",
+        scheduleNotificationDateTime3,
         platformChannel,
         payload:"New Payload"
     );
